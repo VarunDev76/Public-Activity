@@ -1,0 +1,66 @@
+<h1>Activities#index</h1>
+<p>Find me in app/views/activities/index.html.erb</p>
+<h1> User Detailed Page  </h1>
+
+<style type="text/css">
+	.wrapper{height:auto;}
+	.center{width:80%;margin:0 auto;}
+	.row{
+		display:flex;
+		flex-flow:row wrap;	
+		justify-content:space-around;
+		padding:2% 0;
+		height:auto;
+		margin-bottom: 20px;
+		border-bottom: 2px dotted #000;
+	}
+	.colm{ flex-flow:row wrap;justify-content:space-around; width:900px;text-align:center;margin:20px 0;}
+	.colm:nth-child(1){width:50px;}
+	.btn{
+		width:300px; 
+		height: auto;
+		flex-flow:row wrap;
+		justify-content:space-around;
+		padding:2% 2.5%;
+		text-decoration:none;
+		font-size:18px;
+		font-weight:bold;
+		border-radius:8px;
+	}
+	a>.btn{margin:45px 15px ;}
+	.btn-success{background:#00a300;color:#fff;}
+	.btn-danger{background:#ee1111;color:#fff;}
+	.btn-primary{background:#2d89ef;color:#fff;}
+</style>
+
+<div class="wrapper">
+	<div class="center">
+		<div class="row">
+			<div class="colm"> <h1> <strong> Id </strong> </h1> </div>
+			<div class="colm"> <h1> <strong> User Detailed & Buttons </strong> </h1> </div>
+		</div>
+	</div>
+</div>
+	<%#binding.pry%>
+<div class="wrapper">
+	<div class="center">
+  		<% @activities.each do |activity| %>
+  			<div class="activity">
+				<div class="row">
+					<div class="colm"> <h1> <strong> <%= activity.id %> </strong> </h1> </div>
+					<div class="colm"> <strong> <%= link_to activity.owner.name, activity.owner if activity.owner %>
+		    			<%= render_activity activity %> </strong>  </div>
+					<!-- <div class="colm"> 
+						<%#= link_to"Update" , edit_activity_url(activity.id) , class: "btn btn-success" %> 
+						<%#= link_to"Delete" , activity_url(activity.id), method: :delete , class: "btn btn-danger" %> 
+						<%#= link_to "New User" ,  new_user_url , class: "btn btn-primary" %> 
+					</div> -->
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+	  <!-- <div class="activity">
+	    
+	  </div> -->
+<%#= render_activities(@activities) %>

@@ -1,0 +1,27 @@
+<!-- <div class="wrapper">
+	<div class="center">
+		<div class="row">
+			<div class="colm"><%#= activity.id %></div>
+			<div class="colm"> 
+				<strong> <%#=User.find(activity.owner_id).name%> </strong> has been created by <strong> <%=activity.trackable_type%> </strong>
+			</div>
+			<div class="colm"> 
+				<%#= link_to "Update" , edit_activity_url(activity.id) , class: "btn btn-success" %> 
+				<%#= link_to "Delete" , activity_url(activity.id), method: :delete , class: "btn btn-danger" %> 
+				<%#= link_to "New User" ,  new_user_url , class: "btn btn-primary" %> 
+			</div>
+			
+		</div>
+	</div>
+</div> -->
+
+
+		<% if activity.trackable %>
+			<div class="colm">
+				<strong style="font-size:18px;">   has been created by   </strong> <%= link_to activity.trackable.name, activity.trackable %> 
+				
+			<% else %>
+  				which has since been removed
+			</div>
+			
+		<% end %>

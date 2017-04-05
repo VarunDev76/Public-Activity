@@ -1,0 +1,64 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<style type="text/css">
+	.wrapper{height:auto;}
+	.center{width:80%;margin:0 auto;}
+	.row{
+		display:flex;
+		flex-flow:row wrap;	
+		justify-content:space-around;
+		padding:1% 0;
+		height:auto;
+		border-bottom: 2px dotted #000;
+	}
+	.colm{ flex-flow:row wrap;justify-content:space-around; width:200px;text-align:center;margin:10px 0;}
+	.colm:nth-child(1),.colm:nth-child(2){width:50px;}
+	.btn{
+		width:300px; 
+		height: auto;
+		flex-flow:row wrap;
+		justify-content:space-around;
+		padding:5% 4%;
+		text-decoration:none;
+		font-size:18px;
+		font-weight:bold;
+		border-radius:8px;
+	}
+	a>.btn{margin:45px 15px ;}
+	.btn-success{background:#00a300;color:#fff;}
+	.btn-danger{background:#ee1111;color:#fff;}
+	.btn-primary{background:#2d89ef;color:#fff;}
+</style>
+
+<div class="wrapper">
+	<div class="center">
+		<div class="row">
+			<div class="colm"> <h2> <strong> Id </strong> </h2> </div>
+			<div class="colm"> <h2> <strong> User Id </strong> </h2> </div>
+			<div class="colm"> <h2> <strong> User Name </strong> </h2> </div>
+			<div class="colm"> <h2> <strong> Recipe Name </strong> </h2> </div>
+			<div class="colm"> <h2> <strong> Buttons </strong> </h2> </div>
+		</div>
+	</div>
+</div>
+
+<div class="wrapper">
+	<div class="center">
+		<% @publicData.each do|e| %>
+			<div class="row">
+				<div class="colm"> <%= e.id %> </div>
+				<div class="colm"> <%= e.user_id %> </div>
+				<div class="colm"> <%= User.find(e.user_id).name %> </div>
+				<div class="colm"> <%= e.recipe_name %> </div>
+				<div class="colm"> 
+					<%= link_to "Update", edit_user_url(e) , class: "btn btn-success" %>
+					<%= link_to "Back", user_url(e) , class: "btn btn-primary" %>
+					<%= link_to "Delete", user_url(e), method: :delete , class: "btn btn-danger" %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+
+

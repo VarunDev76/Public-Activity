@@ -1,0 +1,16 @@
+<h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+<%= form_for @user, url: user_url(@user) do|e|%>
+
+	<p>
+		<%= e.label 'Id => ' %>
+		<%= @user.id %>
+	</p>
+	<p>
+		<%= e.label 'Name => ' %>
+		<%= e.text_field :name %>
+	</p>
+	<p>
+		<%= e.submit %>
+	</p>
+<% end %>

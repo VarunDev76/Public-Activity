@@ -1,0 +1,10 @@
+<% if activity.trackable %>
+<%#binding.pry%>
+			<div class="colm">
+				<strong style="font-size:18px;">   has been update by   </strong> <%= link_to activity.trackable.name, activity.trackable %> 
+				
+			<% else %>
+  				which has since been removed
+			</div>
+			
+		<% end %>

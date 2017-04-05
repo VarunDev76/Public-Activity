@@ -1,0 +1,45 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+<style type="text/css" media="screen">
+	.wrapper{
+		height:auto;
+	}
+	.center{
+		width:80%;
+		margin:0 auto;
+	}
+	.row{
+		display: flex;
+		flex-flow:row wrap;
+		justify-content:space-around;
+		padding:2% 0;
+		border-bottom:2px dotted #000;
+	}
+	.colm{
+		width:300px;
+		text-align:center;
+	}
+</style>
+<div class="wrapper">
+	<div class="center">
+		<div class="row">
+			<div class="colm"> <strong> Id </strong> </div>
+			<div class="colm"> <strong> Name </strong> </div>
+			<div class="colm"> <strong> Button </strong> </div>
+		</div>
+	</div>
+</div>
+<div class="wrapper">
+<% @allUser.each do|e| %>
+	<div class="center">
+		<div class="row">
+			<div class="colm"> <%= e.id %> </div>	
+			<div class="colm"> <%= e.name %> </div>	
+			<div class="colm"> 
+				<%= link_to "New Recipe Create" ,new_user_recipe_path(e) %> 
+				<%= link_to "New User" ,new_user_path %>
+			</div>
+		</div>
+	</div>
+<% end %>
+</div>

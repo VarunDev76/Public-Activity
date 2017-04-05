@@ -1,0 +1,19 @@
+<h1>Recipes#new</h1>
+<p>Find me in app/views/recipes/new.html.erb</p>
+<%= form_for @recipe, url: params[:action]=="new" ? user_recipes_path(@user) :  user_recipe_path(@user, @recipe) do |f| %>
+	<p>
+		<%= f.label :User_Id %>
+		<strong> <%= @user.id %> </strong> <br>
+	</p>
+	<p>
+		<%= f.label :Recipe_Name %>
+		<%= f.text_field :recipe_name %> <br>
+	</p>
+	<p>
+		<%= f.label :description %>
+		<%= f.text_field :description %> <br>
+	</p>
+	<p>
+		<%= f.submit params[:action]=="new" ? "Create Recipe": "Update Receipe" %>
+	</p>
+<% end %>
