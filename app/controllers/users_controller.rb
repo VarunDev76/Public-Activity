@@ -15,22 +15,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    # binding.pry
-    @publicData =  User.find(params[:id]).recipes #PublicActivity::Activity.find(params[:id])
+    @user =  User.find(params[:id]) #PublicActivity::Activity.find(params[:id])
   end
 
   def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to users_url     
+    end
   end
 
   def edit
-    # binding.pry
-    @user = Recipe.find(params[:id]).user
+    @user = User.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to user_url
+      redirect_to users_url
     end
   end
 

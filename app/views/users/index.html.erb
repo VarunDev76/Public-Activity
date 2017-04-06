@@ -15,10 +15,22 @@
 		padding:2% 0;
 		border-bottom:2px dotted #000;
 	}
-	.colm{
-		width:300px;
-		text-align:center;
+	.colm{ display:flex;flex-flow:row wrap;justify-content:space-around; width:300px;line-height: 50px; text-align:center;}
+	.btn-container{
+		display:flex;flex-flow:row wrap;justify-content:space-around;
+		line-height: 30px;
 	}
+	.btn{
+		padding:7px 16px;
+		margin-top:10px;
+		text-decoration:none;
+		font-size:18px;
+		font-weight:bold;
+		border-radius:8px;
+	}
+	.btn-success{background:#00a300;color:#fff;}
+	.btn-danger{background:#ee1111;color:#fff;}
+	.btn-primary{background:#2d89ef;color:#fff;}
 </style>
 <div class="wrapper">
 	<div class="center">
@@ -30,16 +42,26 @@
 	</div>
 </div>
 <div class="wrapper">
-<% @allUser.each do|e| %>
 	<div class="center">
+	<% @allUser.each do|e| %>
 		<div class="row">
 			<div class="colm"> <%= e.id %> </div>	
 			<div class="colm"> <%= e.name %> </div>	
 			<div class="colm"> 
-				<%= link_to "New Recipe Create" ,new_user_recipe_path(e) %> 
-				<%= link_to "New User" ,new_user_path %>
+				<div class="btn-container">	
+					<%= link_to "New Recipe Create" ,new_user_recipe_path(e), class: "btn btn-success" %> 
+				</div>
+				<div class="btn-container">
+					<%= link_to "New User" ,new_user_path, class: "btn btn-danger" %> 
+				</div>
+				<div class="btn-container">
+					<%= link_to "Show User" ,user_path(e), class: "btn btn-primary" %>
+				</div>
+				<div class="btn-container">
+					<%= link_to "Show Activity" ,activities_path , class: "btn btn-success" %>
+				</div>
 			</div>
 		</div>
+	<% end %>
 	</div>
-<% end %>
 </div>

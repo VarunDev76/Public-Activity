@@ -1,13 +1,11 @@
 class RecipesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-     # binding.pry
-     @activity = PublicActivity::Activity.find_by(trackable_id: (params[:user_id]), trackable_type: controller_path.classify)
     @allRecipe = @user.recipes.all
   end
 
   def show
-    # binding.pry
+    @user = User.find(params[:user_id])
     @recipe =  Recipe.find(params[:id])
   end
 
@@ -20,25 +18,27 @@ class RecipesController < ApplicationController
     @user = User.find(params[:user_id])
     @recipe = @user.recipes.new(recipe_params)
     if @recipe.save
-        redirect_to user_recipes_path(@user.id)        
+        redirect_to user_recipes_path(@user,@recipe.id)        
     end
   end
 
   def destroy
+    @recipe = Recipe.find(params[:id])
+    if @recipe.destroy
+      redirect_to users_url
+    end
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
-    @user = @recipe.user
-    # binding.pry
-    # @publicData =  PublicActivity::Activity.find(params[:id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
   end
 
   def update
-    # binding.pry
-    @recipe = Recipe.find(params[:id])
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
     if @recipe.update_attributes(recipe_params)
-      redirect_to  user_recipe_url(@recipe)
+      redirect_to  user_recipe_url(@user,@recipe.id)
     end
   end
 

@@ -1,11 +1,6 @@
-
-
 <% if activity.trackable %>
-<%#binding.pry%>
-			<div class="colm">
-				<strong style="font-size:18px;">   has been update by   </strong> <%= link_to activity.trackable.recipe_name, edit_user_recipe_url(activity.trackable.user_id,activity.trackable.id) %> 
-				
-			<% else %>
-  				which has since been removed
-			</div>
-		<% end %>
+		<strong style="font-size:18px;">   has been update by   </strong> <%= link_to activity.trackable.recipe_name, user_recipe_url(activity.trackable.user_id,activity.trackable.id) %> 
+		
+	<% else %>
+			<strong> which has since been removed </strong>
+<% end %>

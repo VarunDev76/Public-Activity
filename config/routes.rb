@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # get 'recipe/id' => 'recipes/id'
   # get 'campaigns/:slug' => 'campaigns#show'
-  root 'recipes#index'
+  root 'users#index'
   resources :activities
   resources :friendships
   resources :users do

@@ -1,25 +1,6 @@
-		<% if activity.trackable %>
-<%#binding.pry%>
-			<div class="colm">
-				<strong style="font-size:18px;">   has been created by   </strong> <%= link_to activity.trackable.recipe_name, edit_user_recipe_url(activity.trackable.user_id,activity.trackable.id) %> 
-				
-			<% else %>
-  				which has since been removed
-			</div>
-		<% end %>
-	
-
-  
-
-
-
-
-
-
-
-<!-- <h1> Create Page </h1> -->
-<%# if activity.trackable %>
-  <%#= link_to activity.trackable.recipe.id, activity.trackable %>
-<%# else %>
-  <!-- which has since been removed -->
-<%# end %>
+<% if activity.trackable %>
+		<strong style="font-size:18px;">   has been created by   </strong> <%= link_to activity.trackable.recipe_name, user_recipe_url(activity.trackable.user_id,activity.trackable.id) %> 
+		
+		<% else %>
+				<strong> which has since been removed </strong>
+<% end %>
